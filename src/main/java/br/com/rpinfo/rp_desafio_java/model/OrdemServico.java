@@ -10,6 +10,13 @@ public class OrdemServico {
     private LocalDateTime dataEntrada = LocalDateTime.now();
     private String descricao;
 
+    private Equipamento equipamento;
+
+    public OrdemServico(String descricao, Equipamento equipamento) {
+        this.descricao = descricao;
+        this.equipamento = equipamento;
+    }
+
     public String getDataFormata() {
         var formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
         var dataFormatada = this.dataEntrada.format(formatador);
