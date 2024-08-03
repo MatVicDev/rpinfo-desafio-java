@@ -10,6 +10,8 @@ public class OrdemServico {
     private LocalDateTime dataEntrada = LocalDateTime.now();
     private String descricao;
 
+    private Status status;
+
     private Equipamento equipamento;
 
     public OrdemServico(String descricao, Equipamento equipamento) {
