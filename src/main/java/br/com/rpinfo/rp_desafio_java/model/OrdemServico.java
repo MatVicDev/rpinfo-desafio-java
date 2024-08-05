@@ -1,6 +1,7 @@
 package br.com.rpinfo.rp_desafio_java.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,9 +14,10 @@ public class OrdemServico {
     private Long id;
     private String atendente = "Beatriz";
     private String tecnico = "Rodrigo";
-    private LocalDateTime dataEntrada = LocalDateTime.now();
-    private String descricao;
 
+    @CreationTimestamp
+    private LocalDateTime dataEntrada;
+    private String descricao;
     private Status status;
 
     @OneToOne
