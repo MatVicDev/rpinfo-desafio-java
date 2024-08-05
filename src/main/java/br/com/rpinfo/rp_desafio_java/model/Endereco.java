@@ -1,5 +1,8 @@
 package br.com.rpinfo.rp_desafio_java.model;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class Endereco {
     private String rua;
     private String numero;
