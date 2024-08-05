@@ -1,8 +1,6 @@
 package br.com.rpinfo.rp_desafio_java.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 public class OrdemServico {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String atendente = "Beatriz";
     private String tecnico = "Rodrigo";
@@ -21,6 +20,14 @@ public class OrdemServico {
 
     @OneToOne
     private Equipamento equipamento;
+
+    @OneToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    public OrdemServico() {
+
+    }
 
     public OrdemServico(String descricao, Equipamento equipamento) {
         this.descricao = descricao;
