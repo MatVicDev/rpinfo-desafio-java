@@ -1,7 +1,6 @@
 package br.com.rpinfo.rp_desafio_java.model;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.List;
