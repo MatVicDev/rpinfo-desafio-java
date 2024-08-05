@@ -14,7 +14,7 @@ public class Cliente {
     private Long id;
     private String nome;
 
-    @ManyToOne
+    @Embedded
     private Endereco endereco;
     private String telefone;
     private String email;
