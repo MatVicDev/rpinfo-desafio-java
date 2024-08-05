@@ -1,6 +1,7 @@
 package br.com.rpinfo.rp_desafio_java.model;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.List;
@@ -18,10 +19,11 @@ public class Cliente {
     private Endereco endereco;
     private String telefone;
     private String email;
-    @OneToMany
+
+    @OneToMany(mappedBy = "cliente")
     private List<Equipamento> equipamentos;
 
-    @OneToOne
+    @OneToOne(mappedBy = "cliente")
     private OrdemServico ordemServico;
 
     public Cliente() {
