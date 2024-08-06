@@ -18,8 +18,7 @@ public class Equipamento {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @OneToOne
-    @JoinColumn(name = "ordem_servico_id")
+    @OneToOne(mappedBy = "equipamento")
     private OrdemServico ordemServico;
 
     public Equipamento() {
