@@ -148,7 +148,7 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
         if (ordemServicoService.consultarOrdemServico(idOrdemServico).isPresent()) {
             OrdemServico ordem = ordemServicoService.consultarOrdemServico(idOrdemServico).get();
 
-            System.out.println("Atendendente: " + ordem.getAtendente());
+            System.out.println("Atendente: " + ordem.getAtendente());
             System.out.println("Técnico responsável: " + ordem.getTecnico());
             System.out.println("Data de entrada: " + ordem.getDataFormata());
             System.out.println("Status: " + ordem.getStatus());
