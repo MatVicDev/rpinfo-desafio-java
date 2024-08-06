@@ -46,10 +46,10 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
 
             switch (option) {
                 case 1:
-                    novaOrdemDeServico();
+                    novaOrdemServico();
                     break;
                 case 2:
-                    consultarOrdemDeServico();
+                    consultarOrdemServico();
                     break;
                 case 0:
                     System.out.println("Encerrando...");
@@ -63,7 +63,7 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
         leitura.close();
     }
 
-    private void novaOrdemDeServico() {
+    private void novaOrdemServico() {
         leitura.nextLine();
 
         Cliente cliente = cadastrarCliente();
@@ -115,6 +115,6 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
         return ordemServicoService.cadastrarOrdemServico(descricao, equipamento.getId());
     }
 
-    private void consultarOrdemDeServico() {
+    private void consultarOrdemServico() {
     }
 }
