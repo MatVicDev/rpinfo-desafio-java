@@ -18,9 +18,12 @@ public class OrdemServico {
     @CreationTimestamp
     private LocalDateTime dataEntrada;
     private String descricao;
-    private Status status;
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.EM_PROCESSO;
 
     @OneToOne
+    @JoinColumn(name = "equipamento_id")
     private Equipamento equipamento;
 
     @OneToOne
