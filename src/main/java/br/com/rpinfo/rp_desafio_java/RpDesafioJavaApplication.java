@@ -179,8 +179,8 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
         System.out.println("Digite a descrição: ");
         String descricao = leitura.nextLine();
 
-        System.out.print("Digite o status (EM_PROCESSO, PENDENTE, FINALIZADO)");
-        String statusStr = leitura.nextLine();
+        System.out.print("Digite o status (EM_PROCESSO, PENDENTE, FINALIZADO): ");
+        String statusStr = leitura.nextLine().toUpperCase();
         Status status;
 
         try {
