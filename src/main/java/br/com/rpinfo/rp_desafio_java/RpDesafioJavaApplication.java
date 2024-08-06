@@ -155,6 +155,7 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
             System.out.println("Técnico responsável: " + ordem.getTecnico());
             System.out.println("Data de entrada: " + ordem.getDataFormata());
             System.out.println("Status: " + ordem.getStatus());
+            System.out.println("Descrição do serviço: " + ordem.getDescricao());
             System.out.println("Nome cliente: " + ordem.getCliente().getNome());
             System.out.println("Equipamento: " + ordem.getEquipamento().getTipo());
 
