@@ -36,6 +36,54 @@ public class OrdemServico {
         this.equipamento = equipamento;
     }
 
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setEquipamento(Equipamento equipamento) {
+        this.equipamento = equipamento;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getAtendente() {
+        return atendente;
+    }
+
+    public String getTecnico() {
+        return tecnico;
+    }
+
+    public LocalDateTime getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public Equipamento getEquipamento() {
+        return equipamento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
     public String getDataFormata() {
         var formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
         var dataFormatada = this.dataEntrada.format(formatador);
