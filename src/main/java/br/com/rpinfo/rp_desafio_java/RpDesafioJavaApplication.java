@@ -18,7 +18,7 @@ import java.util.Scanner;
 @SpringBootApplication
 public class RpDesafioJavaApplication implements CommandLineRunner {
 
-    private static Scanner leitura = new Scanner(System.in);
+    private Scanner leitura = new Scanner(System.in);
 
     @Autowired
     private ClienteService clienteService;
