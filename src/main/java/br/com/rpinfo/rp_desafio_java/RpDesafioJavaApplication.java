@@ -1,9 +1,6 @@
 package br.com.rpinfo.rp_desafio_java;
 
-import br.com.rpinfo.rp_desafio_java.model.Cliente;
-import br.com.rpinfo.rp_desafio_java.model.Endereco;
-import br.com.rpinfo.rp_desafio_java.model.Equipamento;
-import br.com.rpinfo.rp_desafio_java.model.OrdemServico;
+import br.com.rpinfo.rp_desafio_java.model.*;
 import br.com.rpinfo.rp_desafio_java.service.ClienteService;
 import br.com.rpinfo.rp_desafio_java.service.EquipamentoService;
 import br.com.rpinfo.rp_desafio_java.service.OrdemServicoService;
@@ -13,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -42,6 +40,7 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
             System.out.println("1 - Nova ordem de serviço");
             System.out.println("2 - Listar ordens de serviços");
             System.out.println("3 - Consultar ordem de serviço");
+            System.out.println("4 - Atualizar ordem de serviço");
             System.out.println("0 - Sair");
 
             option = leitura.nextInt();
@@ -55,6 +54,9 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
                     break;
                 case 3:
                     consultarOrdemServico();
+                    break;
+                case 4:
+                    atualizarOrdemServico();
                     break;
                 case 0:
                     System.out.println("Encerrando...");
@@ -144,6 +146,7 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
     private void consultarOrdemServico() {
         System.out.print("Procure por uma ordem de servico: ");
         Long idOrdemServico = leitura.nextLong();
+        leitura.nextLine();
 
         if (ordemServicoService.consultarOrdemServico(idOrdemServico).isPresent()) {
             OrdemServico ordem = ordemServicoService.consultarOrdemServico(idOrdemServico).get();
@@ -158,6 +161,40 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
             System.out.println("----------------------");
         } else {
             System.out.println("Ordem de serviço não encontrada!");
+        }
+    }
+
+    private void atualizarOrdemServico() {
+        System.out.print("Atualize a ordem de serviço pelo ID: ");
+        Long idOrdemServico = leitura.nextLong();
+        leitura.nextLine();
+
+        Optional<OrdemServico> ordemServico = ordemServicoService.consultarOrdemServico(idOrdemServico);
+
+        if (ordemServico.isEmpty()) {
+            System.out.println("Ordem de serviço não encontrada!");
+            return;
+        }
+
+        System.out.println("Digite a descrição: ");
+        String descricao = leitura.nextLine();
+
+        System.out.print("Digite o status (EM_PROCESSO, PENDENTE, FINALIZADO)");
+        String statusStr = leitura.nextLine();
+        Status status;
+
+        try {
+            status = Status.valueOf(statusStr);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Status inválido. Operação cancelada.");
+            return;
+        }
+
+        try {
+            ordemServico = Optional.of(ordemServicoService.atualizarOrdemServico(idOrdemServico, descricao, status));
+            System.out.println("Ordem de serviço atualizada com sucesso! ID: " + ordemServico.get().getId());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Não foi possível atualizar a ordem de serviço: " + e.getMessage());
         }
     }
 }

@@ -2,9 +2,11 @@ package br.com.rpinfo.rp_desafio_java.service;
 
 import br.com.rpinfo.rp_desafio_java.model.Equipamento;
 import br.com.rpinfo.rp_desafio_java.model.OrdemServico;
+import br.com.rpinfo.rp_desafio_java.model.Status;
 import br.com.rpinfo.rp_desafio_java.repository.ClienteRepository;
 import br.com.rpinfo.rp_desafio_java.repository.EquipamentoRepository;
 import br.com.rpinfo.rp_desafio_java.repository.OrdemServicoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +42,15 @@ public class OrdemServicoService {
 
     public Optional<OrdemServico> consultarOrdemServico(Long id) {
         return ordemServicoRepository.findById(id);
+    }
+
+    @Transactional
+    public OrdemServico atualizarOrdemServico(Long id, String descricao, Status status) {
+        OrdemServico ordemServico = ordemServicoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Ordem de serviço não encontrada"));
+
+        ordemServico.setDescricao(descricao);
+        ordemServico.setStatus(status);
+
+        return ordemServicoRepository.save(ordemServico);
     }
 }
