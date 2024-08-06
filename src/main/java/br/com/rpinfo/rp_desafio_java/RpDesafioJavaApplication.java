@@ -12,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -39,7 +40,8 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
         do {
             System.out.println("*** Digite uma opção: ****\n");
             System.out.println("1 - Nova ordem de serviço");
-            System.out.println("2 - Consultar ordem de serviço");
+            System.out.println("2 - Listar ordens de serviços");
+            System.out.println("3 - Consultar ordem de serviço");
             System.out.println("0 - Sair");
 
             option = leitura.nextInt();
@@ -49,6 +51,9 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
                     novaOrdemServico();
                     break;
                 case 2:
+                    listarOrdensServico();
+                    break;
+                case 3:
                     consultarOrdemServico();
                     break;
                 case 0:
@@ -113,6 +118,27 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
         var descricao = leitura.nextLine();
 
         return ordemServicoService.cadastrarOrdemServico(descricao, equipamento.getId());
+    }
+
+    private void listarOrdensServico() {
+        System.out.println("*** Lista de ordens de servico ***");
+        List<OrdemServico> ordensServico = ordemServicoService.listarOrdensServico();
+
+        if (ordensServico.isEmpty()) {
+            System.out.println("Nenhuma ordem de serviço encontrada!");
+        } else {
+            for (OrdemServico ordem : ordensServico) {
+                System.out.println("ID: " + ordem.getId());
+                System.out.println("Atendendente: " + ordem.getAtendente());
+                System.out.println("Técnico responsável: " + ordem.getTecnico());
+                System.out.println("Data de entrada: " + ordem.getDataFormata());
+                System.out.println("Status: " + ordem.getStatus());
+                System.out.println("Nome cliente: " + ordem.getCliente().getNome());
+                System.out.println("Equipamento: " + ordem.getEquipamento().getTipo());
+
+                System.out.println("----------------------");
+            }
+        }
     }
 
     private void consultarOrdemServico() {

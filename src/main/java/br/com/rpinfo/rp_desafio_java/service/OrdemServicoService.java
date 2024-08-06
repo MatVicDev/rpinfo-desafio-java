@@ -8,6 +8,8 @@ import br.com.rpinfo.rp_desafio_java.repository.OrdemServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrdemServicoService {
 
@@ -20,7 +22,6 @@ public class OrdemServicoService {
     @Autowired
     private EquipamentoRepository equipamentoRepository;
 
-
     public OrdemServico cadastrarOrdemServico(String descricao, Long equipamentoId) {
         Equipamento equipamento = equipamentoRepository.findById(equipamentoId).orElseThrow(() -> new IllegalArgumentException("Cliente não cadastrado!"));
 
@@ -30,6 +31,10 @@ public class OrdemServicoService {
         equipamento.setOrdemServico(ordemServico);
 
         return ordemServicoRepository.save(ordemServico);
+    }
+
+    public List<OrdemServico> listarOrdensServico() {
+        return ordemServicoRepository.findAll();
     }
 
     public OrdemServico consultarOrdemServico(Long id) {
