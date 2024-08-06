@@ -142,5 +142,22 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
     }
 
     private void consultarOrdemServico() {
+        System.out.print("Procure por uma ordem de servico: ");
+        Long idOrdemServico = leitura.nextLong();
+
+        if (ordemServicoService.consultarOrdemServico(idOrdemServico).isPresent()) {
+            OrdemServico ordem = ordemServicoService.consultarOrdemServico(idOrdemServico).get();
+
+            System.out.println("Atendendente: " + ordem.getAtendente());
+            System.out.println("Técnico responsável: " + ordem.getTecnico());
+            System.out.println("Data de entrada: " + ordem.getDataFormata());
+            System.out.println("Status: " + ordem.getStatus());
+            System.out.println("Nome cliente: " + ordem.getCliente().getNome());
+            System.out.println("Equipamento: " + ordem.getEquipamento().getTipo());
+
+            System.out.println("----------------------");
+        } else {
+            System.out.println("Ordem de serviço não encontrada!");
+        }
     }
 }
