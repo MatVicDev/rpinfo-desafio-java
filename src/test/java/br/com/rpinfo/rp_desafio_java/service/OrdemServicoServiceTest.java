@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -79,5 +80,21 @@ class OrdemServicoServiceTest {
         assertEquals("Beatriz", ordemServicoSalvo.getAtendente());
         assertEquals("Rodrigo", ordemServicoSalvo.getTecnico());
         assertEquals(Status.EM_PROCESSO, ordemServicoSalvo.getStatus());
+    }
+
+    @Test
+    void atualizarOrdemServico_Sucesso() {
+        String descricao = "Trocar a tela trincada";
+
+        OrdemServico ordemServico = new OrdemServico(descricao, new Equipamento());
+        ordemServico.setId(1L);
+
+        when(ordemServicoRepository.findById(anyLong())).thenReturn(Optional.of(ordemServico));
+        when(ordemServicoRepository.save(any(OrdemServico.class))).thenReturn(ordemServico);
+
+        OrdemServico ordemServicoAtualizada = ordemServicoService.atualizarOrdemServico(1L, "Nova descrição", Status.FINALIZADO);
+
+        assertEquals("Nova descrição", ordemServicoAtualizada.getDescricao());
+        assertEquals(Status.FINALIZADO, ordemServicoAtualizada.getStatus());
     }
 }
