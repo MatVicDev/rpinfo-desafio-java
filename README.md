@@ -4,14 +4,14 @@ Sistema de gerenciamento de ordens de serviço para uma loja que oferece reparos
 
 ## Para começar
 
-Antes de executar o programa, certifique-se que tenha uma versão da JRE instalada na sua máquina. Depois disso, clone o projeto do github e vá na pasta onde está o JAR, em "rpinfo_desafio_java/out/", abra o terminal e digite o seguinte comando `java -jar rp_desafio_java.jar`, isso irá iniciar o programa.
+Antes de executar o programa, certifique-se que tenha uma versão da JRE instalada na sua máquina. Depois disso, clone o projeto do github e vá na pasta onde está o JAR, em "rpinfo_desafio_java/out/artifacts/rp_desafio_java_jar", abra o terminal e digite o seguinte comando `java -jar rp_desafio_java.jar`, isso irá iniciar o programa.
 
 ### Menu inicial
 
 No menu inicial será apresentado as opções para o usuários interagir com o sistema.
 
  1 - Nova ordem de serviço
- 2 - 	Listar ordens de serviço
+ 2 - Listar ordens de serviço
  3 - Consultar ordem de serviço
  4 - Atualizar ordem de serviço
  0 - Sair
