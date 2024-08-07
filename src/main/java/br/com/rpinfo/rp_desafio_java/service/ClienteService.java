@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClienteService {
 
@@ -21,5 +23,9 @@ public class ClienteService {
 
     public Cliente consultarCliente(Long id) {
         return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
+    }
+
+    public List<Cliente> listarClientes() {
+        return repository.findAll();
     }
 }
