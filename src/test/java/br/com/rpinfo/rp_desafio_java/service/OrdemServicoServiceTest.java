@@ -1,9 +1,6 @@
 package br.com.rpinfo.rp_desafio_java.service;
 
-import br.com.rpinfo.rp_desafio_java.model.Cliente;
-import br.com.rpinfo.rp_desafio_java.model.Endereco;
-import br.com.rpinfo.rp_desafio_java.model.Equipamento;
-import br.com.rpinfo.rp_desafio_java.model.OrdemServico;
+import br.com.rpinfo.rp_desafio_java.model.*;
 import br.com.rpinfo.rp_desafio_java.repository.ClienteRepository;
 import br.com.rpinfo.rp_desafio_java.repository.EquipamentoRepository;
 import br.com.rpinfo.rp_desafio_java.repository.OrdemServicoRepository;
@@ -79,5 +76,8 @@ class OrdemServicoServiceTest {
         OrdemServico ordemServicoSalvo = ordemServicoService.cadastrarOrdemServico(descricao, equipamento.getId());
 
         assertEquals(1L, ordemServicoSalvo.getId());
+        assertEquals("Beatriz", ordemServicoSalvo.getAtendente());
+        assertEquals("Rodrigo", ordemServicoSalvo.getTecnico());
+        assertEquals(Status.EM_PROCESSO, ordemServicoSalvo.getStatus());
     }
 }
