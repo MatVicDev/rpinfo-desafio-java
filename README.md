@@ -1,16 +1,48 @@
-# Getting Started
+# Sistema de registros de ordens de serviço
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Sistema de gerenciamento de ordens de serviço para uma loja que oferece reparos em aparelhos eletrônicos. Esse sistema possibilitará o cadastro do cliente, do equipamento e posteriormente irá gerar uma ordem de serviço, onde o profissional responsável irá descrever o trabalho realizado e atualizará o Status da demanda.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.3.2/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.3.2/maven-plugin/build-image.html)
+## Para começar
 
-### Maven Parent overrides
+Antes de executar o programa, certifique-se que tenha uma versão da JRE instalada na sua máquina. Depois disso, clone o projeto do github e vá na pasta onde está o JAR, em "rpinfo_desafio_java/out/", abra o terminal e digite o seguinte comando `java -jar rp_desafio_java.jar`, isso irá iniciar o programa.
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+### Menu inicial
 
+No menu inicial será apresentado as opções para o usuários interagir com o sistema.
+
+ 1 - Nova ordem de serviço
+ 2 - 	Listar ordens de serviço
+ 3 - Consultar ordem de serviço
+ 4 - Atualizar ordem de serviço
+ 0 - Sair
+
+#### 1 - Nova ordem de serviço
+Aqui será possível cadastrar os dados do cliente e também do equipamento. Também será  necessário informar a descrição do servico a ser realizado.
+
+#### 2 - Listar ordens de serviço
+Opção para listar todas as as ordens de serviço.
+
+#### 3 - Consultar ordem de serviço
+Será solicitado o ID da ordem de serviço que será buscado no banco.
+
+#### 4 - Atualizar ordem de serviço
+Opção para atualizar uma ordem de serviço em andamento. Usado caso a ordem seja finalizada ou parada por alguma razão, será possível descrever melhor a situação da demanda.
+
+#### 0 - Sair
+Encerra o programa.
+
+## Consumo da API
+
+Depois de executar o programa, é possível consultar os dados do banco via API. Isso pode ser feito pelo navegador ou um software espcífico para isso (Postman, Insomnia, etc).
+
+### Acessando clientes
+
+No endereço local `http://localhost:8080/clientes` será possível recuperar os dados do cliente. Você também pode recuperar um cliente em específico pelo ID no `http://localhost:8080/clientes/(id)`.
+
+### Acessando equipamentos
+
+No endereço local `http://localhost:8080/equipamentos` será possível recuperar os dados do equipamento. Você também pode recuperar um equipamento em específico pelo ID no `http://localhost:8080/equipamentos/(id)`.
+
+### Acessando ordens de serviço
+
+No endereço local `http://localhost:8080/ordem_servico` será possível recuperar os dados das ordens de serviço cadastrados. Você também pode recuperar uma ordem de serviço em específico pelo ID no `http://localhost:8080/ordem_servico/(id)`.
