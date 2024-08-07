@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,9 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
 
     @Autowired
     private OrdemServicoService ordemServicoService;
+
+    @Autowired
+    private ConfigurableApplicationContext contexto;
 
     public static void main(String[] args) {
         SpringApplication.run(RpDesafioJavaApplication.class, args);
@@ -60,6 +64,7 @@ public class RpDesafioJavaApplication implements CommandLineRunner {
                     break;
                 case 0:
                     System.out.println("Encerrando...");
+                    contexto.close();
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.\n");
