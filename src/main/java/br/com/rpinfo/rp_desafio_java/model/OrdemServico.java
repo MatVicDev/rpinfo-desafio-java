@@ -39,6 +39,10 @@ public class OrdemServico {
         this.equipamento = equipamento;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
