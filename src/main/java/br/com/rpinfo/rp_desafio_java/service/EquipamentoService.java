@@ -8,6 +8,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EquipamentoService {
 
@@ -27,5 +29,9 @@ public class EquipamentoService {
 
     public Equipamento consultarEquipamento(Long id) {
         return equipamentoRepository.findById(id).orElse(null);
+    }
+
+    public List<Equipamento> listarEquipamentos() {
+        return equipamentoRepository.findAll();
     }
 }
